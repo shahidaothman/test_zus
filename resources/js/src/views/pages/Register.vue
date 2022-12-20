@@ -8,7 +8,7 @@
             <v-img :src="require('@/assets/images/logos/logo.svg').default" max-height="30px" max-width="30px"
               alt="logo" contain class="me-3"></v-img>
 
-            <h2 class="text-2xl font-weight-semibold">Materio</h2>
+            <h2 class="text-2xl font-weight-semibold">Test</h2>
           </router-link>
         </v-card-title>
 
