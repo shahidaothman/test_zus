@@ -161,7 +161,6 @@ return {
 },
 
   data() {
-
         return {
             // user: [],
             formdata: {
@@ -177,19 +176,30 @@ return {
     handleLogin() {
       let self = this;
       axios
-        .post('/api/auth/login', 
-        this.formdata
-        )
+        .post('/api/auth/login', this.formdata)
 
-    .then(function(response){
-      if (response.status == 200) {
-        console.log(response)
-        localStorage.setItem('token', response.data)
-        self.$router.push({name: 'dashboard'});
-      } else {
-        console.log("opps")
-      }
-    })
+    // .then(function(response){
+    //   if (response.status == 200) {
+    //     console.log(response)
+    //     localStorage.setItem('token', response.data)
+    //     self.$router.push({name: 'dashboard'});
+    //   } else {
+    //     console.log("opps")
+    //   }
+    // })
+
+    // .then(res=>User.responseAfterLogin(res))
+    // .catch(error=>console.log(error.response))
+
+
+    .then((response) => {
+                localStorage.setItem('token', response.data)
+                console.log(response.data);
+                self.$router.push({name: 'dashboard'})
+            })
+
+    .catch(error=>console.log(error.response))
+
     }
   },
 

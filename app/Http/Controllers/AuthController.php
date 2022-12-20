@@ -20,12 +20,12 @@ class AuthController extends Controller
      */
     public function register(Request $request)
     {
-        // $request->validate([
-        //     'name' => 'required|string',
-        //     'email' => 'required|string|unique:users',
-        //     'password' => 'required|string',
-        //     // 'c_password' => 'required|same:password'
-        // ]);
+        $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|string|unique:users',
+            'password' => 'required|string',
+            // 'c_password' => 'required|same:password'
+        ]);
 
         $user = new User([
             'name'  => $request->name,
@@ -34,16 +34,23 @@ class AuthController extends Controller
         ]);
 
         if ($user->save()) {
-            $tokenResult = $user->createToken('Personal Access Token');
-            $token = $tokenResult->plainTextToken;
 
-            return response()->json([
-                'message' => 'Successfully created user!',
-                'accessToken' => $token,
-            ], 201);
-        } else {
-            return response()->json(['error' => 'Provide proper details']);
+            return $this->login($request);
         }
+
+        // if ($user->save()) {
+        //     $tokenResult = $user->createToken('Personal Access Token');
+        //     $token = $tokenResult->plainTextToken;
+
+        //     return response()->json([
+        //         'message' => 'Successfully created user!',
+        //         'accessToken' => $token,
+        //     ], 201);
+        // } else {
+        //     return response()->json(['error' => 'Provide proper details']);
+        // }
+
+       
     }
 
     public function login(Request $request)
@@ -58,7 +65,7 @@ class AuthController extends Controller
         // if (!Auth::attempt($credentials)) {
             if (!$token = auth()->attempt($credentials)) {
             return response()->json([
-                'message' => 'Unauthorized'
+                'message' => 'Email or Password invalid'
             ], 401);
         }
 
@@ -96,6 +103,7 @@ class AuthController extends Controller
         return response()->json([
             'accessToken' => $token,
             'token_type' => 'Bearer',
+           
         ]);
     }
 }
