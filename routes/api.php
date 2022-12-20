@@ -24,8 +24,6 @@ Route::group(['prefix' => 'auth'], function () {
     Route::post('login', [AuthController::class, 'login']);
     Route::post('register', [AuthController::class, 'register']);
 
-    // Route::post('me', [AuthController::class, 'me']);
-
     // Route::get('boards', [BoardController::class, 'index']);
     // Route::post('boards', [BoardController::class, 'store']);
     // Route::get('/boards/{board}', [BoardController::class, 'show']);
@@ -39,4 +37,5 @@ Route::group(['prefix' => 'auth'], function () {
       Route::get('logout', [AuthController::class, 'logout']);
       Route::get('user', [AuthController::class, 'user']);
     });
+    
 });

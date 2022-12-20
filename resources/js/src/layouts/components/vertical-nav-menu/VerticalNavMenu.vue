@@ -21,7 +21,7 @@
           class="app-logo me-3"
         ></v-img>
         <v-slide-x-transition>
-          <h2 class="app-title text--primary">MATERIO</h2>
+          <h2 class="app-title text--primary">Testing</h2>
         </v-slide-x-transition>
       </router-link>
     </div>
@@ -29,36 +29,40 @@
     <!-- Navigation Items -->
     <v-list expand shaped class="vertical-nav-menu-items pr-5">
       <nav-menu-link title="Dashboard" :to="{ name: 'dashboard' }" :icon="icons.mdiHomeOutline"></nav-menu-link>
-      <nav-menu-link
+      <!-- <nav-menu-link
         title="Account Settings"
         :to="{ name: 'pages-account-settings' }"
         :icon="icons.mdiAccountCogOutline"
-      ></nav-menu-link>
-      <nav-menu-group title="Pages" :icon="icons.mdiFileOutline">
+      ></nav-menu-link> -->
+      <!-- <nav-menu-group title="Pages" :icon="icons.mdiFileOutline">
         <nav-menu-link title="Login" :to="{ name: 'pages-login' }" target="_blank"></nav-menu-link>
         <nav-menu-link title="Register" :to="{ name: 'pages-register' }" target="_blank"></nav-menu-link>
         <nav-menu-link title="Error" :to="{ name: 'error-404' }" target="_blank"></nav-menu-link>
+      </nav-menu-group> -->
+      <nav-menu-section-title title="USER SECTION"></nav-menu-section-title>
+      <nav-menu-group title="User" :icon="icons.mdiFileOutline">
+        <nav-menu-link title="Create Users" :to="{ name: 'user-create' }" target="_blank"></nav-menu-link>
+        <nav-menu-link title="View Users" :to="{ name: 'user-view' }" target="_blank"></nav-menu-link>
       </nav-menu-group>
-      <nav-menu-section-title title="USER INTERFACE"></nav-menu-section-title>
+
+      <nav-menu-group title=" Support" :icon="icons.mdiFileOutline">
+        <nav-menu-link title="Create  Support" :to="{ name: 'customer-support-create' }" target="_blank"></nav-menu-link>
+        <nav-menu-link title="View  Support" :to="{ name: 'customer-support-view' }" target="_blank"></nav-menu-link>
+      </nav-menu-group>
+
+      <nav-menu-section-title title="PRODUCT SECTION"></nav-menu-section-title>
+      <nav-menu-group title="Product" :icon="icons.mdiFileOutline">
+        <nav-menu-link title="Create Product" :to="{ name: 'product-create' }" target="_blank"></nav-menu-link>
+        <nav-menu-link title="View Product" :to="{ name: 'product-view' }" target="_blank"></nav-menu-link>
+      </nav-menu-group>
+      <!-- <nav-menu-section-title title="USER INTERFACE"></nav-menu-section-title>
       <nav-menu-link title="Typography" :to="{ name: 'typography' }" :icon="icons.mdiAlphaTBoxOutline"></nav-menu-link>
       <nav-menu-link title="Icons" :to="{ name: 'icons' }" :icon="icons.mdiEyeOutline"></nav-menu-link>
       <nav-menu-link title="Cards" :to="{ name: 'cards' }" :icon="icons.mdiCreditCardOutline"></nav-menu-link>
       <nav-menu-link title="Tables" :to="{ name: 'simple-table' }" :icon="icons.mdiTable"></nav-menu-link>
-      <nav-menu-link title="Form Layouts" :to="{ name: 'form-layouts' }" :icon="icons.mdiFormSelect"></nav-menu-link>
+      <nav-menu-link title="Form Layouts" :to="{ name: 'form-layouts' }" :icon="icons.mdiFormSelect"></nav-menu-link> -->
     </v-list>
-    <a
-      href="https://themeselection.com/products/materio-vuetify-vuejs-laravel-admin-template"
-      target="_blank"
-      rel="nofollow"
-    >
-      <v-img
-        :src="require(`@/assets/images/pro/upgrade-banner-${$vuetify.theme.dark ? 'dark' : 'light'}.png`).default"
-        alt="upgrade-banner"
-        transition="scale-transition"
-        class="upgrade-banner mx-auto"
-        max-width="230"
-      ></v-img>
-    </a>
+ 
   </v-navigation-drawer>
 </template>
 

@@ -110,17 +110,13 @@ import { ref } from '@vue/composition-api'
 import axios from 'axios'
 
 export default {
-  // setup() {
-
-
-  //     data: {
-  //   users: [],
-  //   username: '',
-
-  // },
+//   created() {
+//   if(User.loggedIn()){
+//     self.$router.push({name: 'dashboard'})
+//   }
+// },
 
   setup() {
-
 const isPasswordVisible = ref(false)
 
 const socialLink = [
@@ -159,6 +155,8 @@ return {
   },
 }
 },
+
+
 
   data() {
         return {

@@ -44,8 +44,8 @@ const routes = [
     component: () => import('@/views/pages/account-settings/AccountSettings.vue'),
   },
   {
-    path: '/pages/login',
-    name: 'pages-login',
+    path: '/login',
+    name: 'login',
     component: () => import('@/views/pages/Login.vue'),
     meta: {
       layout: 'blank',
@@ -67,15 +67,38 @@ const routes = [
       layout: 'blank',
     },
   },
-  {
-    path: '*',
-    redirect: 'error-404',
-  },
+
 
   {
     path: '/board',
     name: 'board',
     component: () => import('@/views/board/main.vue'),
+  },
+
+  {
+    path: '/user-view',
+    name: 'user-view',
+    component: () => import('@/views/board/admin/user-view.vue'),
+  },
+  {
+    path: '/user-create',
+    name: 'user-create',
+    component: () => import('@/views/board/admin/user-create.vue'),
+  },
+
+  {
+    path: '/product-view',
+    name: 'product-view',
+    component: () => import('@/views/board/product/product-view.vue'),
+  },
+  {
+    path: '/product-create',
+    name: 'product-create',
+    component: () => import('@/views/board/product/product-create.vue'),
+  },
+  {
+    path: '*',
+    redirect: 'error-404',
   },
 ]
 
