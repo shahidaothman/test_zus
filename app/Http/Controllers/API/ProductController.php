@@ -69,4 +69,26 @@ class ProductController extends Controller
         $product->delete();
         return response()->noContent();
     }
+
+    public function insertProduct(Request $request)
+ 
+    {
+      
+        $product = new Product([
+            'name'  => $request->name,
+            'status' => $request->status,
+            'description' => $request->description,
+            'price' => $request->price,
+            
+        ]);
+
+       
+        return $product ;
+
+        if ($product ->save()) {
+
+            return response();
+        }
+}
+
 }

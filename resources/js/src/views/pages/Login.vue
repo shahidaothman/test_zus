@@ -35,6 +35,7 @@
               hide-details
               class="mb-3"
             ></v-text-field>
+            <div v-if="formdata.errors.has('email')" v-html="formdata.errors.get('email')"></div>
 
             <v-text-field
               v-model="formdata.password"
@@ -46,6 +47,7 @@
               hide-details
               @click:append="isPasswordVisible = !isPasswordVisible"
             ></v-text-field>
+            <div v-if="formdata.errors.has('password')" v-html="formdata.errors.get('password')"></div>
 
             <div class="d-flex align-center justify-space-between flex-wrap">
               <v-checkbox label="Remember Me" hide-details class="me-3 mt-1"> </v-checkbox>
@@ -108,6 +110,7 @@
 import { mdiFacebook, mdiTwitter, mdiGithub, mdiGoogle, mdiEyeOutline, mdiEyeOffOutline } from '@mdi/js'
 import { ref } from '@vue/composition-api'
 import axios from 'axios'
+import Form from 'vform'
 
 export default {
 //   created() {
@@ -161,11 +164,11 @@ return {
   data() {
         return {
             // user: [],
-            formdata: {
+            formdata: new Form( {
                 email: '',
                 password: '',
    
-            },
+            }),
             errors: {}
         }
     },

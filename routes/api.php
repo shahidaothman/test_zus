@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\CreateControllerProduct;
 use App\Http\Controllers\API\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,7 +22,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource(name:'product',controller:App\Http\Controllers\API\ProductController::class);
+Route::apiResource('product',controller:App\Http\Controllers\API\ProductController::class);
+
+Route::post('addProduct', [ProductController::class, 'insertProduct']);
+// Route::apiResource(['product' => 'App\Http\Controllers\API\ProductController']);
+
 
 Route::group(['prefix' => 'auth'], function () {
     Route::post('login', [AuthController::class, 'login']);
