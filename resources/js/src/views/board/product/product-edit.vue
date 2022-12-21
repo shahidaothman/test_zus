@@ -2,7 +2,7 @@
   <v-card>
     <v-card-title>Product List</v-card-title>
     <v-card-text>
-      <v-text-field id="email" v-model="form.id" outlined dense placeholder="Email"
+      <v-text-field iv-model="form.id" outlined dense placeholder=""
               hide-details></v-text-field>
       <v-form>
         <v-row>
