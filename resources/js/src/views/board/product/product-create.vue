@@ -69,31 +69,34 @@ export default {
                 status: '',
             },
 
+           
+
         }
     },
 
     methods: {
         AddProduct() {
 
-          
+         
             let self = this;
-
+         
             axios
                 .post('/api/addProduct',
-        
-
-                    this.formdata
+                    this.form
                 )
    
                 .then(function (response) {
-                    if (response.status == 201) {
+                    if (response.status == 200) {
                         // console.log("haree")
                         self.$router.push({ name: 'product-view' });
 
                     } else {
-                        console.log("opps")
+                        error=>console.log(error.response)
+                        alert("check your error");
                     }
                 })
+
+               
 
 
 

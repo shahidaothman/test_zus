@@ -97,6 +97,12 @@ const routes = [
     component: () => import('@/views/board/product/product-create.vue'),
   },
   {
+    path: '/product-edit',
+    name: 'product-edit',
+    component: () => import('@/views/board/product/product-edit.vue'),
+    props:true
+  },
+  {
     path: '*',
     redirect: 'error-404',
   },

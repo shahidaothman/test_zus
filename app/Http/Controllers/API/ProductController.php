@@ -83,12 +83,9 @@ class ProductController extends Controller
         ]);
 
        
-        return $product ;
+        return $product ->save() ;
 
-        if ($product ->save()) {
-
-            return response();
-        }
+     
 }
 
 }
