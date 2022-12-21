@@ -97,10 +97,14 @@ const routes = [
     component: () => import('@/views/board/product/product-create.vue'),
   },
   {
-    path: '/product-edit',
-    name: 'product-edit',
+    // path: '/product-edit/:id/edit',
+    // name: 'product.edit',
+    // component: () => import('@/views/board/product/product-edit.vue'),
+    // // props:true
+    path: '/product-edit/:id',
+    name: 'product.edit',
     component: () => import('@/views/board/product/product-edit.vue'),
-    props:true
+    // props:true
   },
   {
     path: '*',

@@ -16,10 +16,11 @@ export default function useProducts() {
         console.log( products.value);
     }
 
-    // const getProduct = async (id) => {
-    //     let response = await axios.get('/api/product/' + id)
-    //     product.value = response.data.data;
-    // }
+    const getProduct = async (id) => {
+        let response = await axios.get('/api/product/'+id)
+        product.value = response.data.data;
+      
+    }
 
 const destroyProduct = async(id) => {
     await axios.delete(('/api/product/' + id))
@@ -36,6 +37,7 @@ const storeProduct = async(data) => {
         product,
         errors,
         getProducts,
+        getProduct,
         destroyProduct,
         storeProduct,
      
