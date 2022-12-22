@@ -1,25 +1,11 @@
 <template>
-  <v-navigation-drawer
-    :value="isDrawerOpen"
-    app
-    floating
-    width="260"
-    class="app-navigation-menu"
-    :right="$vuetify.rtl"
-    @input="val => $emit('update:is-drawer-open', val)"
-  >
+  <v-navigation-drawer :value="isDrawerOpen" app floating width="260" class="app-navigation-menu" :right="$vuetify.rtl"
+    @input="val => $emit('update:is-drawer-open', val)">
     <!-- Navigation Header -->
     <div class="vertical-nav-header d-flex items-center ps-6 pe-5 pt-5 pb-2">
       <router-link to="/" class="d-flex align-center text-decoration-none">
-        <v-img
-          :src="require('@/assets/images/logos/logo.svg').default"
-          max-height="30px"
-          max-width="30px"
-          alt="logo"
-          contain
-          eager
-          class="app-logo me-3"
-        ></v-img>
+        <v-img :src="require('@/assets/images/logos/logo.svg').default" max-height="30px" max-width="30px" alt="logo"
+          contain eager class="app-logo me-3"></v-img>
         <v-slide-x-transition>
           <h2 class="app-title text--primary">Testing</h2>
         </v-slide-x-transition>
@@ -39,22 +25,32 @@
         <nav-menu-link title="Register" :to="{ name: 'pages-register' }" target="_blank"></nav-menu-link>
         <nav-menu-link title="Error" :to="{ name: 'error-404' }" target="_blank"></nav-menu-link>
       </nav-menu-group> -->
+
+      <div v-if="inputMessage=='1'">
       <nav-menu-section-title title="Admin SECTION"></nav-menu-section-title>
       <nav-menu-group title="User" :icon="icons.mdiFileOutline">
-        <nav-menu-link title="Create Admin" :to="{ name: 'admin-create' }" ></nav-menu-link>
-        <nav-menu-link title="View Admin" :to="{ name: 'admin-view' }" ></nav-menu-link>
+        <nav-menu-link title="Create Admin" :to="{ name: 'admin-create' }"></nav-menu-link>
+        <nav-menu-link title="View Admin" :to="{ name: 'admin-view' }"></nav-menu-link>
       </nav-menu-group>
+    </div>
 
       <nav-menu-group title=" Support" :icon="icons.mdiFileOutline">
-        <nav-menu-link title="Create  Support" :to="{ name: 'support-create' }" ></nav-menu-link>
-        <nav-menu-link title="View  Support" :to="{ name: 'support-view' }" ></nav-menu-link>
+        <nav-menu-link title="Create  Support" :to="{ name: 'support-create' }"></nav-menu-link>
+        <nav-menu-link title="View  Support" :to="{ name: 'support-view' }"></nav-menu-link>
       </nav-menu-group>
 
-      <nav-menu-section-title title="PRODUCT SECTION"></nav-menu-section-title>
+      
+         <nav-menu-section-title title="PRODUCT SECTION"></nav-menu-section-title>
       <nav-menu-group title="Product" :icon="icons.mdiFileOutline">
-        <nav-menu-link title="Create Product" :to="{ name: 'product-create' }" ></nav-menu-link>
-        <nav-menu-link title="View Product" :to="{ name: 'product-view' }" ></nav-menu-link>
+        <nav-menu-link title="Create Product" :to="{ name: 'product-create' }"></nav-menu-link>
+        <nav-menu-link title="View Product" :to="{ name: 'product-view' }"></nav-menu-link>
       </nav-menu-group>
+    
+     
+
+      <!-- <v-text-field id="mobile"  v-model="inputMessage" ></v-text-field> -->
+
+
       <!-- <nav-menu-section-title title="USER INTERFACE"></nav-menu-section-title>
       <nav-menu-link title="Typography" :to="{ name: 'typography' }" :icon="icons.mdiAlphaTBoxOutline"></nav-menu-link>
       <nav-menu-link title="Icons" :to="{ name: 'icons' }" :icon="icons.mdiEyeOutline"></nav-menu-link>
@@ -62,7 +58,7 @@
       <nav-menu-link title="Tables" :to="{ name: 'simple-table' }" :icon="icons.mdiTable"></nav-menu-link>
       <nav-menu-link title="Form Layouts" :to="{ name: 'form-layouts' }" :icon="icons.mdiFormSelect"></nav-menu-link> -->
     </v-list>
- 
+
   </v-navigation-drawer>
 </template>
 
@@ -83,6 +79,9 @@ import NavMenuGroup from './components/NavMenuGroup.vue'
 import NavMenuLink from './components/NavMenuLink.vue'
 
 export default {
+
+
+
   components: {
     NavMenuSectionTitle,
     NavMenuGroup,
@@ -95,6 +94,8 @@ export default {
     },
   },
   setup() {
+   
+    
     return {
       icons: {
         mdiHomeOutline,
@@ -106,8 +107,33 @@ export default {
         mdiFormSelect,
         mdiAccountCogOutline,
       },
+      
     }
   },
+
+  data() {
+    let value = localStorage.role;
+    return {
+      
+        inputMessage: value,
+    };
+    },
+    methods: {
+    AddMessage() {
+        this.inputMessage /*do something with it*/
+    },
+    },
+  // mounted() {
+  //   let role = localStorage.getItem('role')
+  //   if (role == '1')
+  //     console.log("here")
+
+
+  //   else
+  //     console.log("dede")
+  // },
+
+
 }
 </script>
 
@@ -126,6 +152,7 @@ export default {
 // ? Adjust this `translateX` value to keep logo in center when vertical nav menu is collapsed (Value depends on your logo)
 .app-logo {
   transition: all 0.18s ease-in-out;
+
   .v-navigation-drawer--mini-variant & {
     transform: translateX(-4px);
   }

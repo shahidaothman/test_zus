@@ -187,8 +187,8 @@ return {
 
 
     .then((response) => {
-                localStorage.setItem('token', response.data.accessToken)
-                
+                localStorage.setItem('token', response.data.token)
+                localStorage.setItem('role', response.data.user.role_id)
                 console.log(response.data);
                 self.$router.push({name: 'dashboard'})
             })

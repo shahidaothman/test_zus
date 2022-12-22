@@ -77,14 +77,16 @@ class AuthController extends Controller
                 'message' => 'Email or Password invalid'
             ], 401);
         }
-
+    
         $user = $request->user();
         $tokenResult = $user->createToken('Personal Access Token');
         // $token = $tokenResult->plainTextToken;
         $token = $tokenResult->plainTextToken;
 
 
-        return $this->respondWithToken($token);
+        // return $this->respondWithToken($token,);
+        return response()->json(compact('token', 'user'));
+
     }
 
     public function user(Request $request)

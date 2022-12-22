@@ -43,6 +43,7 @@
     "vue-multiselect": "^3.0.0-alpha.2",
     "vue-router": "^3.6.5",
     "vue-session": "^1.0.0",
+    "vue-sidebar-menu": "^5.2.5",
     "vuetify": "^2.4.0",
     "vuetifyjs-mix-extension": "0.0.20",
     "vuex": "^3.6.2",

@@ -34,6 +34,7 @@ const routes = [
   {
     path: '/dashboard',
     name: 'dashboard',
+    beforeEnter: guardMyroute,
     component: () => import('@/views/dashboard/Dashboard.vue'),
   },
   {
