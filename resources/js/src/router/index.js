@@ -88,6 +88,13 @@ const routes = [
     component: () => import('@/views/board/admin/admin-create.vue'),
   },
 
+  {
+    path: '/admin-edit/:id',
+    name: 'admin-edit',
+    component: () => import('@/views/board/admin/admin-edit.vue'),
+    props:true
+  },
+
   // PRODUCT
 
   {

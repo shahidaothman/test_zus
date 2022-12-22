@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\AdminController;
 use App\Http\Controllers\API\CreateControllerProduct;
 use App\Http\Controllers\API\ProductController;
 use Illuminate\Http\Request;
@@ -28,6 +29,8 @@ Route::get('editProduct/{id}', [ProductController::class, 'editProduct']);
 Route::put('updateProduct', [ProductController::class, 'updateProduct']);
 
 Route::apiResource('admin',controller:App\Http\Controllers\API\AdminController::class);
+Route::put('updateAdmin', [AdminController::class, 'updateAdmin']);
+
 
 Route::group(['prefix' => 'auth'], function () {
     Route::post('login', [AuthController::class, 'login']);

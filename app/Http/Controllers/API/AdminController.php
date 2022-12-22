@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\AdminRequest;
-use App\Http\Resources\AdminResource;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Requests\AdminRequest;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\AdminResource;
 
 class AdminController extends Controller
 {
@@ -30,7 +31,6 @@ class AdminController extends Controller
      */
     public function store(AdminRequest $request)
     {
-        dd($request);
          $admin = User::create($request->validated());
          return new AdminResource([$admin]);
     }
@@ -41,9 +41,13 @@ class AdminController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $admin)
+    public function show($id)
     {
-        return new AdminResource(($admin));
+        // return new AdminResource(($admin));
+        $admin = User::where('id', $id)->first();
+        return response()->json($admin);
+        // dd ($data);
+   
 
     }
 
@@ -56,6 +60,8 @@ class AdminController extends Controller
      */
     public function update(Request $request, User $admin)
     {
+       
+       
         $admin = User::create($request->validated());
         return new AdminResource(($admin));
     }
@@ -70,5 +76,17 @@ class AdminController extends Controller
     {
         $admin->delete();
         return response()->noContent();
+    }
+
+    public function updateAdmin(Request $request)
+    {
+        // $admin = User::create($request->validated());
+        // return new AdminResource(($admin));
+        $admin = User::find($request->id);
+        $admin->name = $request->name; 
+        $admin->email = $request->email; 
+        $admin->password = $request->password; 
+        
+        $admin = $admin->save();
     }
 }

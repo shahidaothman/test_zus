@@ -2,8 +2,7 @@
   <v-card>
     <v-card-title>Product List</v-card-title>
     <v-card-text>
-      <v-text-field iv-model="form.id" outlined dense placeholder=""
-              hide-details></v-text-field>
+      <v-text-field iv-model="form.id" outlined dense placeholder="" hide-details></v-text-field>
       <v-form>
         <v-row>
           <v-col cols="12" md="3">
@@ -71,8 +70,8 @@ export default {
   //         }
   //     },
 
-  data() {  
-    
+  data() {
+
     return {
       form: {
         name: '',
@@ -117,28 +116,26 @@ export default {
     // }
 
 
-    productUpdate(){    
+    productUpdate() {
       let self = this;
-     
-         
-         axios
-             .put('/api/updateProduct',
-                 this.form
-             )
 
-             .then(function (response) {
-                 if (response.status == 200) {
-                     // console.log("haree")
-                     self.$router.push({ name: 'product-view' });
 
-                 } else {
-                     error=>console.log(error.response)
-                     alert("check your error");
-                 }
-             })
+      axios
+        .put('/api/updateProduct',this.form)
 
+        .then(function (response) {
+          if (response.status == 200) {
+            // console.log("haree")
+            self.$router.push({ name: 'product-view' });
+
+          } else {
+            error => console.log(error.response)
+            alert("check your error");
+          }
+        })
+
+    }
   }
-}
 
 
   // props: {

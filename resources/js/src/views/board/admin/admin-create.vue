@@ -12,8 +12,8 @@
           <v-text-field v-model="form.email" :prepend-inner-icon="icons.mdiEmailOutline" label="Email" type="email"
             outlined dense placeholder="Email"></v-text-field>
 
-          <v-text-field v-model="form.role_id" :prepend-inner-icon="icons.mdiCellphone" label="Mobile" outlined dense
-            type="number" placeholder="Role"></v-text-field>
+          <v-text-field class="d-none" v-model="form.role_id" :prepend-inner-icon="icons.mdiCellphone" label="Role" outlined dense
+            type="number" placeholder="Role" value="1"></v-text-field>
 
           <v-text-field v-model="form.password" :prepend-inner-icon="icons.mdiLockOutline" label="Password" outlined
             dense type="password" placeholder="password"></v-text-field>
@@ -64,11 +64,8 @@ export default {
 </script> -->
 
 <script>
-import { reactive } from '@vue/composition-api'
-import useAdmin from '../../../components/crud/admin'
+
 import { mdiAccountOutline, mdiEmailOutline, mdiCellphone, mdiLockOutline } from '@mdi/js'
-import { ref } from '@vue/composition-api'
-import data from '../../dashboard/datatable-data'
 import axios from 'axios'
 
 export default {
@@ -80,19 +77,24 @@ export default {
         'name': '',
         'email': '',
         'password': '',
-        'role_id': '',
+        'role_id': '1',
       }
 
     }
   },
 
 
-  methods: {
-    AddAdmin() {
-      // const { storeAdmin } = useAdmin()
-      const dataadmin = this.form;
 
-      axios.post('/api/admin/',dataadmin)
+
+  methods: {
+
+
+    AddAdmin() {
+      let self = this;
+
+
+      axios
+        .post('/api/admin',this.form)
 
         .then(function (response) {
           if (response.status == 200) {
@@ -105,21 +107,7 @@ export default {
           }
         })
 
-
-
-
-
-
-
-
     }
-    // const firstname = ref('')
-    // const email = ref('')
-    // const mobile = ref()
-    // const password = ref()
-    // const checkbox = ref(false)
-
-
   },
 
   setup() {
