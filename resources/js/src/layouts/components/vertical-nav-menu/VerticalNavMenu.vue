@@ -39,21 +39,21 @@
         <nav-menu-link title="Register" :to="{ name: 'pages-register' }" target="_blank"></nav-menu-link>
         <nav-menu-link title="Error" :to="{ name: 'error-404' }" target="_blank"></nav-menu-link>
       </nav-menu-group> -->
-      <nav-menu-section-title title="USER SECTION"></nav-menu-section-title>
+      <nav-menu-section-title title="Admin SECTION"></nav-menu-section-title>
       <nav-menu-group title="User" :icon="icons.mdiFileOutline">
-        <nav-menu-link title="Create Users" :to="{ name: 'user-create' }" target="_blank"></nav-menu-link>
-        <nav-menu-link title="View Users" :to="{ name: 'user-view' }" target="_blank"></nav-menu-link>
+        <nav-menu-link title="Create Admin" :to="{ name: 'admin-create' }" ></nav-menu-link>
+        <nav-menu-link title="View Admin" :to="{ name: 'admin-view' }" ></nav-menu-link>
       </nav-menu-group>
 
       <nav-menu-group title=" Support" :icon="icons.mdiFileOutline">
-        <nav-menu-link title="Create  Support" :to="{ name: 'customer-support-create' }" target="_blank"></nav-menu-link>
-        <nav-menu-link title="View  Support" :to="{ name: 'customer-support-view' }" target="_blank"></nav-menu-link>
+        <nav-menu-link title="Create  Support" :to="{ name: 'customer-support-create' }" ></nav-menu-link>
+        <nav-menu-link title="View  Support" :to="{ name: 'customer-support-view' }" ></nav-menu-link>
       </nav-menu-group>
 
       <nav-menu-section-title title="PRODUCT SECTION"></nav-menu-section-title>
       <nav-menu-group title="Product" :icon="icons.mdiFileOutline">
-        <nav-menu-link title="Create Product" :to="{ name: 'product-create' }" target="_blank"></nav-menu-link>
-        <nav-menu-link title="View Product" :to="{ name: 'product-view' }" target="_blank"></nav-menu-link>
+        <nav-menu-link title="Create Product" :to="{ name: 'product-create' }" ></nav-menu-link>
+        <nav-menu-link title="View Product" :to="{ name: 'product-view' }" ></nav-menu-link>
       </nav-menu-group>
       <!-- <nav-menu-section-title title="USER INTERFACE"></nav-menu-section-title>
       <nav-menu-link title="Typography" :to="{ name: 'typography' }" :icon="icons.mdiAlphaTBoxOutline"></nav-menu-link>

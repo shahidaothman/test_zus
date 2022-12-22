@@ -75,16 +75,20 @@ const routes = [
     component: () => import('@/views/board/main.vue'),
   },
 
+// ADMIN
+
   {
-    path: '/user-view',
-    name: 'user-view',
-    component: () => import('@/views/board/admin/user-view.vue'),
+    path: '/admin-view',
+    name: 'admin-view',
+    component: () => import('@/views/board/admin/admin-view.vue'),
   },
   {
-    path: '/user-create',
-    name: 'user-create',
-    component: () => import('@/views/board/admin/user-create.vue'),
+    path: '/admin-create',
+    name: 'admin-create',
+    component: () => import('@/views/board/admin/admin-create.vue'),
   },
+
+  // PRODUCT
 
   {
     path: '/product-view',
