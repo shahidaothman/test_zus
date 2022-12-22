@@ -47,7 +47,7 @@
         <!-- create new account  -->
         <v-card-text class="d-flex align-center justify-center flex-wrap mt-2">
           <span class="me-2"> Already have an account? </span>
-          <router-link :to="{ name: 'pages-login' }" click> Sign in instead </router-link>
+          <router-link :to="{ name: 'login' }" click> Sign in instead </router-link>
           <!-- <button >Sign ssin</button> -->
         </v-card-text>
 

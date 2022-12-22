@@ -27,7 +27,7 @@ function guardMyroute(to, from, next) {
 const routes = [
   {
     path: '/', 
-    redirect: 'login',
+    redirect: 'main-page',
    
 
   },
@@ -72,6 +72,14 @@ const routes = [
     path: '/login',
     name: 'login',
     component: () => import('@/views/pages/Login.vue'),
+    meta: {
+      layout: 'blank',
+    },
+  },
+  {
+    path: '/main-page',
+    name: 'main-page',
+    component: () => import('@/views/main-page/user.vue'),
     meta: {
       layout: 'blank',
     },
