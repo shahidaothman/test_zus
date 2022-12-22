@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\AdminController;
 use App\Http\Controllers\API\CreateControllerProduct;
 use App\Http\Controllers\API\ProductController;
+use App\Http\Controllers\API\SupportController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -31,6 +32,8 @@ Route::put('updateProduct', [ProductController::class, 'updateProduct']);
 Route::apiResource('admin',controller:App\Http\Controllers\API\AdminController::class);
 Route::put('updateAdmin', [AdminController::class, 'updateAdmin']);
 
+Route::apiResource('support',controller:App\Http\Controllers\API\SupportController::class);
+Route::put('updateSupport', [SupportController::class, 'updateSupport']);
 
 Route::group(['prefix' => 'auth'], function () {
     Route::post('login', [AuthController::class, 'login']);

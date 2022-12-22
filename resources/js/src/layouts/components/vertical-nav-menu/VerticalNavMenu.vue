@@ -46,8 +46,8 @@
       </nav-menu-group>
 
       <nav-menu-group title=" Support" :icon="icons.mdiFileOutline">
-        <nav-menu-link title="Create  Support" :to="{ name: 'customer-support-create' }" ></nav-menu-link>
-        <nav-menu-link title="View  Support" :to="{ name: 'customer-support-view' }" ></nav-menu-link>
+        <nav-menu-link title="Create  Support" :to="{ name: 'support-create' }" ></nav-menu-link>
+        <nav-menu-link title="View  Support" :to="{ name: 'support-view' }" ></nav-menu-link>
       </nav-menu-group>
 
       <nav-menu-section-title title="PRODUCT SECTION"></nav-menu-section-title>

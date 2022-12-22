@@ -95,6 +95,26 @@ const routes = [
     props:true
   },
 
+  // SUPPORT
+
+  {
+    path: '/support-view',
+    name: 'support-view',
+    component: () => import('@/views/board/support/support-view.vue'),
+  },
+  {
+    path: '/support-create',
+    name: 'support-create',
+    component: () => import('@/views/board/support/support-create.vue'),
+  },
+
+  {
+    path: '/support-edit/:id',
+    name: 'support-edit',
+    component: () => import('@/views/board/support/support-edit.vue'),
+    props:true
+  },
+
   // PRODUCT
 
   {
