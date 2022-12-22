@@ -9,7 +9,7 @@
         <v-slide-x-transition>
           <h2 class="app-title text--primary">Testing</h2>
         </v-slide-x-transition>
-      </router-link>
+      <!-- </router-link> -->
     </div>
 
     <!-- Navigation Items -->
