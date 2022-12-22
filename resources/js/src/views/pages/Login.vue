@@ -5,14 +5,8 @@
         <!-- logo -->
         <v-card-title class="d-flex align-center justify-center py-7">
           <router-link to="/" class="d-flex align-center">
-            <v-img
-              :src="require('@/assets/images/logos/logo.svg').default"
-              max-height="30px"
-              max-width="30px"
-              alt="logo"
-              contain
-              class="me-3"
-            ></v-img>
+            <v-img :src="require('@/assets/images/logos/logo.svg').default" max-height="30px" max-width="30px"
+              alt="logo" contain class="me-3"></v-img>
 
             <h2 class="text-2xl font-weight-semibold">Testing</h2>
           </router-link>
@@ -27,26 +21,14 @@
         <!-- login form -->
         <v-card-text>
           <v-form>
-            <v-text-field
-              v-model="formdata.email"
-              outlined
-              label="Email"
-              placeholder="john@example.com"
-              hide-details
-              class="mb-3"
-            ></v-text-field>
+            <v-text-field v-model="formdata.email" outlined label="Email" placeholder="john@example.com" hide-details
+              class="mb-3"></v-text-field>
             <div v-if="formdata.errors.has('email')" v-html="formdata.errors.get('email')"></div>
 
-            <v-text-field
-              v-model="formdata.password"
-              outlined
-              :type="isPasswordVisible ? 'text' : 'password'"
-              label="Password"
-              placeholder="············"
-              :append-icon="isPasswordVisible ? icons.mdiEyeOffOutline : icons.mdiEyeOutline"
-              hide-details
-              @click:append="isPasswordVisible = !isPasswordVisible"
-            ></v-text-field>
+            <v-text-field v-model="formdata.password" outlined :type="isPasswordVisible ? 'text' : 'password'"
+              label="Password" placeholder="············"
+              :append-icon="isPasswordVisible ? icons.mdiEyeOffOutline : icons.mdiEyeOutline" hide-details
+              @click:append="isPasswordVisible = !isPasswordVisible"></v-text-field>
             <div v-if="formdata.errors.has('password')" v-html="formdata.errors.get('password')"></div>
 
             <div class="d-flex align-center justify-space-between flex-wrap">
@@ -85,22 +67,15 @@
     </div>
 
     <!-- background triangle shape  -->
-    <img
-      class="auth-mask-bg"
-      height="173"
-      :src="require(`@/assets/images/misc/mask-${$vuetify.theme.dark ? 'dark' : 'light'}.png`).default"
-    />
+    <img class="auth-mask-bg" height="173"
+      :src="require(`@/assets/images/misc/mask-${$vuetify.theme.dark ? 'dark' : 'light'}.png`).default" />
 
     <!-- tree -->
     <v-img class="auth-tree" width="247" height="185" :src="require('@/assets/images/misc/tree.png').default"></v-img>
 
     <!-- tree  -->
-    <v-img
-      class="auth-tree-3"
-      width="377"
-      height="289"
-      :src="require('@/assets/images/misc/tree-3.png').default"
-    ></v-img>
+    <v-img class="auth-tree-3" width="377" height="289"
+      :src="require('@/assets/images/misc/tree-3.png').default"></v-img>
   </div>
 </template>
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
@@ -113,10 +88,25 @@ import axios from 'axios'
 import Form from 'vform'
 
 export default {
-//   created() {
+//   onBeforeMount() {
 //   if(User.loggedIn()){
 //     self.$router.push({name: 'dashboard'})
 //   }
+// },
+// create(){
+//   function guardMyroute(to, from, next)
+// {
+//  var isAuthenticated= false;
+//  if(localStorage.getItem('LoggedUser'))
+//   isAuthenticated = true;
+//  else
+//   isAuthenticated= false;
+// if(isAuthenticated) {
+//   next(); // allow to enter route
+//  } else{
+//   next('/login'); // go to '/login';
+//  }
+// }
 // },
 
   setup() {
@@ -169,11 +159,14 @@ return {
                 password: '',
    
             }),
+            isAuthenticated: false,
             errors: {}
         }
     },
   
   methods: {
+    
+    
     handleLogin() {
       let self = this;
       axios
@@ -194,7 +187,8 @@ return {
 
 
     .then((response) => {
-                localStorage.setItem('token', response.data)
+                localStorage.setItem('token', response.data.accessToken)
+                
                 console.log(response.data);
                 self.$router.push({name: 'dashboard'})
             })

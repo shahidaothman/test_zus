@@ -19,6 +19,7 @@ class SupportSeeder extends Seeder
             'email' => 'customer_support@gmail.com',
             'email_verified_at' => now(),
             'password' => bcrypt('123456789'),
+            'role_id' => '2',
         ]);
 
         $customer_support->assignRole('customer_support');

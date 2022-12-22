@@ -3,10 +3,33 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
+function guardMyroute(to, from, next) {
+  var isAuthenticated = false;
+  //this is just an example. You will have to find a better or 
+  // centralised way to handle you localstorage data handling 
+  if (localStorage.getItem('token'))
+    isAuthenticated = true;
+  else
+    isAuthenticated = false;
+  if (isAuthenticated) {
+    next(); // allow to enter route
+  }
+  else {
+    next('/login'); // go to '/login';
+  }
+}
+
+
+
+
+
+
 const routes = [
   {
-    path: '/',
-    redirect: 'dashboard',
+    path: '/', 
+    redirect: 'login',
+   
+
   },
   {
     path: '/dashboard',
@@ -41,6 +64,7 @@ const routes = [
   {
     path: '/pages/account-settings',
     name: 'pages-account-settings',
+    beforeEnter: guardMyroute,
     component: () => import('@/views/pages/account-settings/AccountSettings.vue'),
   },
   {
@@ -75,24 +99,30 @@ const routes = [
     component: () => import('@/views/board/main.vue'),
   },
 
-// ADMIN
+  // ADMIN
 
   {
     path: '/admin-view',
     name: 'admin-view',
+    beforeEnter: guardMyroute,
+
     component: () => import('@/views/board/admin/admin-view.vue'),
   },
   {
     path: '/admin-create',
     name: 'admin-create',
+    beforeEnter: guardMyroute,
+
     component: () => import('@/views/board/admin/admin-create.vue'),
   },
 
   {
     path: '/admin-edit/:id',
     name: 'admin-edit',
+    beforeEnter: guardMyroute,
+
     component: () => import('@/views/board/admin/admin-edit.vue'),
-    props:true
+    props: true
   },
 
   // SUPPORT
@@ -100,19 +130,25 @@ const routes = [
   {
     path: '/support-view',
     name: 'support-view',
+    beforeEnter: guardMyroute,
+
     component: () => import('@/views/board/support/support-view.vue'),
   },
   {
     path: '/support-create',
     name: 'support-create',
+    beforeEnter: guardMyroute,
+
     component: () => import('@/views/board/support/support-create.vue'),
   },
 
   {
     path: '/support-edit/:id',
     name: 'support-edit',
+    beforeEnter: guardMyroute,
+
     component: () => import('@/views/board/support/support-edit.vue'),
-    props:true
+    props: true
   },
 
   // PRODUCT
@@ -120,12 +156,23 @@ const routes = [
   {
     path: '/product-view',
     name: 'product-view',
+    beforeEnter: guardMyroute,
+
     component: () => import('@/views/board/product/product-view.vue'),
   },
   {
     path: '/product-create',
     name: 'product-create',
+    beforeEnter: guardMyroute,
+
     component: () => import('@/views/board/product/product-create.vue'),
+  },
+  {
+    path: '/product-test',
+    name: 'product-cretestate',
+    beforeEnter: guardMyroute,
+
+    component: () => import('@/views/board/product/product-test.vue'),
   },
   {
     // path: '/product-edit/:id/edit',
@@ -134,6 +181,8 @@ const routes = [
     // // props:true
     path: '/product-edit/:id',
     name: 'product.edit',
+    beforeEnter: guardMyroute,
+
     component: () => import('@/views/board/product/product-edit.vue'),
     // props:true
   },

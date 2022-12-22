@@ -110,7 +110,7 @@
           </v-icon>
         </v-list-item-icon>
         <v-list-item-content>
-          <v-list-item-title>Logout</v-list-item-title>
+          <v-list-item-title @click="logout">Logout</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
     </v-list>
@@ -118,6 +118,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import {
   mdiAccountOutline,
   mdiEmailOutline,
@@ -128,6 +129,7 @@ import {
   mdiHelpCircleOutline,
   mdiLogoutVariant,
 } from '@mdi/js'
+
 
 export default {
   setup() {
@@ -144,8 +146,29 @@ export default {
       },
     }
   },
+  methods: {
+    logout() {
+
+      let self = this;
+
+      axios
+        .get('/api/auth/logout')
+
+
+        .then((response) => {
+                console.log(response.data);
+                localStorage.removeItem('token');
+                self.$router.push({name: 'login'})
+            })
+    .catch(error=>console.log(error.response))
+
+
+
+    }
+  },
 }
 </script>
+
 
 <style lang="scss">
 .user-profile-menu-content {
