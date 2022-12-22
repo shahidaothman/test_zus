@@ -19,6 +19,12 @@ class CreateProductsTable extends Migration
             $table->string('price');
             $table->string('description');
             $table->string('status');
+            $table->string('tag');
+            $table->string('sold_out');
+            $table->string('limited');
+            $table->string('new');
+            $table->string('fast_selling');
+
             $table->timestamps();
         });
     }
