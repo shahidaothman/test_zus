@@ -44,6 +44,7 @@
       <nav-menu-group title="Product" :icon="icons.mdiFileOutline">
         <nav-menu-link title="Create Product" :to="{ name: 'product-create' }"></nav-menu-link>
         <nav-menu-link title="View Product" :to="{ name: 'product-view' }"></nav-menu-link>
+        <nav-menu-link title="Filter Product" :to="{ name: 'product-filter' }"></nav-menu-link>
       </nav-menu-group>
     
      

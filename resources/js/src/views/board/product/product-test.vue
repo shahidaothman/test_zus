@@ -1,57 +1,63 @@
+<!-- Vue component -->
 <template>
-  <v-card>
-    <v-card-title>
-      <v-text-field
-        v-model="search"
-        append-icon="mdi-magnify"
-        label="Search"
-        single-line
-        hide-details
-      ></v-text-field>
-    </v-card-title>
-    <v-data-table
-      :headers="headers"
-      :items="products"
-      :search="search"
-    ></v-data-table>
-  </v-card>
+ <div>
+  <label class="typo__label">Tags</label>
+  <multiselect v-model="value" :options="options" :multiple="true" :close-on-select="false" :clear-on-select="false" :preserve-search="true" placeholder="Pick some" label="name" track-by="name" :preselect-first="true">
+    <!-- <template slot="selection" slot-scope="{ values, search, isOpen }"><span class="multiselect__single" v-if="values.length &amp;&amp; !isOpen">{{ values.length }} options selected</span></template> -->
+  </multiselect>
+  <!-- <pre class="language-json"><code>{{ value  }}</code></pre> -->
+</div>
+
 </template>
 
 <script>
-import axios from "axios";
+import Multiselect from 'vue-multiselect'
 
-
-
-export default ({
-  data() {
+export default {
+  components: {
+    Multiselect
+  },
+  data () {
     return {
-      search: '',
-      headers:[
-      { text: 'ID', value: 'id' },
-      { text: 'name', value: 'name' },
-      { text: 'status', value: 'status' },
-      { text: 'description', value: 'description' },
-      { text: 'price', value: 'price' },
-      ],
-products:[
-// {
-//             name: 'Frozen Yogurt',
-//             id: 159,
-//             status: 6.0,
-//             description: 24,
-          
-//           },
-]
+      value: [],
+      options: [
+        { name: 'sold_out', product: 'Sold Out' },
+        { name: 'new', product: 'New' },
+        { name: 'fast_selling', product: 'Fast Selling' },
+        { name: 'limited', product: 'Limited' },
+      
+      ]
     }
   },
+  methods: {
+        AddProduct() {
 
-  created() {
-    axios.get('/api/product').then(response=>{
-      this.products=response.data.data;
-      console.log(response.data.data)
-    })
-
+         
+            let self = this;
+         
+            axios
+                .post('/api/addProduct',
+                    this.form
+                )
    
-  },
-})
+                .then(function (response) {
+                    if (response.status == 200) {
+                        // console.log("haree")
+                        self.$router.push({ name: 'product-view' });
+
+                    } else {
+                        error=>console.log(error.response)
+                        alert("check your error");
+                    }
+                })
+
+               
+
+
+
+
+        }
+    },
+}
 </script>
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>

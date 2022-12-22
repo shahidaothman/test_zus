@@ -35,6 +35,9 @@ Route::put('updateAdmin', [AdminController::class, 'updateAdmin']);
 Route::apiResource('support',controller:App\Http\Controllers\API\SupportController::class);
 Route::put('updateSupport', [SupportController::class, 'updateSupport']);
 
+Route::apiResource('tag',controller:App\Http\Controllers\API\TagController::class);
+
+
 Route::group(['prefix' => 'auth'], function () {
     Route::post('login', [AuthController::class, 'login']);
     Route::post('register', [AuthController::class, 'register']);

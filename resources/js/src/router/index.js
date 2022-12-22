@@ -183,6 +183,14 @@ const routes = [
 
     component: () => import('@/views/board/product/product-test.vue'),
   },
+
+  {
+    path: '/product-filter',
+    name: 'product-filter',
+    beforeEnter: guardMyroute,
+
+    component: () => import('@/views/board/product/product-filter.vue'),
+  },
   {
     // path: '/product-edit/:id/edit',
     // name: 'product.edit',
